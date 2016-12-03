@@ -33,7 +33,7 @@ public class inicio extends Application {
         aux.SumImage();
         int inicio = (int) (aux.getWidth()*0.125);
         int fim = (int) (aux.getWidth()*0.375);
-        FWHM estatistica = new FWHM(aux.SumImageVet(inicio,inicio,fim,fim));
+        FWHM estatistica = new FWHM(aux.profileHori(inicio,inicio,fim,fim));
         System.out.println(estatistica.calcFWHM());
 //        
 //        Parent root = FXMLLoader.load(getClass().getResource("teste.fxml"));

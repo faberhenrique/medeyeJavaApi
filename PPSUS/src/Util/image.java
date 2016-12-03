@@ -142,11 +142,25 @@ public class image {
 
         }
     }
-    public double [] SumImageVet(int lineI,int colI,int lineF, int colF) {
+    //Method that traces profile to check horizontal bars
+    public double [] profileVet(int lineI,int colI,int lineF, int colF) {
         double sum_vet[]=new double[colF-colI];
         int aux = 0;
         for (int line = lineI; line < lineF; line++) {
             for ( int col = colI; col < colF; col++) {
+                sum_vet[aux] = sum_vet[aux] + cali.getCValue((image.getPixel(line, col))[0]);
+            }
+            aux++;
+
+        }
+        return sum_vet;
+    }
+        //Method that traces profile to check vertical bars
+        public double[] profileHori(int lineI,int colI,int lineF, int colF){
+        double sum_vet[]=new double[colF-colI];
+        int aux = 0;
+        for ( int col = colI; col < colF; col++) {
+        for (int line = lineI; line < lineF; line++) {
                 sum_vet[aux] = sum_vet[aux] + cali.getCValue((image.getPixel(line, col))[0]);
             }
             aux++;
@@ -176,4 +190,6 @@ public class image {
         }
 
     }
+    
+
 }
