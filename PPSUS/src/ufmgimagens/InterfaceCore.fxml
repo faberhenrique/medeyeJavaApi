@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="847.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TabPane prefHeight="539.0" prefWidth="847.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Barras">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="589.0" prefWidth="847.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane fx:id="archorBarra" layoutX="9.0" layoutY="293.0" prefHeight="244.0" prefWidth="832.0">
+                                 <children>
+                                    <LineChart layoutX="-36.0" layoutY="-107.0" prefHeight="293.0" prefWidth="832.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </LineChart>
+                                 </children>
+                              </AnchorPane>
+                              <ImageView fx:id="previewBarra" disable="true" fitHeight="246.0" fitWidth="371.0" layoutX="462.0" layoutY="38.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../Barras/imagemEditada.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="462.0" layoutY="14.0" text="Preview" />
+                              <Label layoutX="26.0" layoutY="134.0" text="Espessura da Barra" />
+                              <TextField fx:id="textEspessura" layoutX="142.0" layoutY="130.0" />
+                              <Label layoutX="26.0" layoutY="172.0" text="Tamanho Perfil" />
+                              <TextField fx:id="textPerfil" layoutX="142.0" layoutY="168.0" />
+                              <Button fx:id="buttonCarregaBarra" layoutX="120.0" layoutY="51.0" mnemonicParsing="false" text="Carregar Imagem" />
+                              <Label layoutX="26.0" layoutY="221.0" text="Relação Sinal Ruído:" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Hidrataçao">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="589.0" prefWidth="847.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="9.0" layoutY="293.0" prefHeight="244.0" prefWidth="832.0">
+                                 <children>
+                                    <LineChart layoutX="-36.0" layoutY="-107.0" prefHeight="293.0" prefWidth="832.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <xAxis>
+                                          <CategoryAxis side="BOTTOM" />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis side="LEFT" />
+                                       </yAxis>
+                                    </LineChart>
+                                 </children>
+                              </AnchorPane>
+                              <ImageView disable="true" fitHeight="246.0" fitWidth="371.0" layoutX="462.0" layoutY="38.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../Barras/imagemEditada.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="462.0" layoutY="14.0" text="Preview" />
+                              <Label layoutX="26.0" layoutY="134.0" text="Espessura da Barra" />
+                              <TextField layoutX="142.0" layoutY="130.0" />
+                              <Label layoutX="26.0" layoutY="172.0" text="Tamanho Perfil" />
+                              <TextField layoutX="142.0" layoutY="168.0" />
+                              <Button layoutX="120.0" layoutY="51.0" mnemonicParsing="false" text="Carregar Imagem" />
+                              <Label layoutX="26.0" layoutY="221.0" text="Relação Sinal Ruído:" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Centro de Rotaçao">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="589.0" prefWidth="847.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="9.0" layoutY="293.0" prefHeight="244.0" prefWidth="832.0">
+                                 <children>
+                                    <LineChart layoutX="-36.0" layoutY="-107.0" prefHeight="293.0" prefWidth="832.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <xAxis>
+                                          <CategoryAxis side="BOTTOM" />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis side="LEFT" />
+                                       </yAxis>
+                                    </LineChart>
+                                 </children>
+                              </AnchorPane>
+                              <ImageView disable="true" fitHeight="246.0" fitWidth="371.0" layoutX="462.0" layoutY="38.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../Barras/imagemEditada.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="462.0" layoutY="14.0" text="Preview" />
+                              <Label layoutX="26.0" layoutY="134.0" text="Espessura da Barra" />
+                              <TextField layoutX="142.0" layoutY="130.0" />
+                              <Label layoutX="26.0" layoutY="172.0" text="Tamanho Perfil" />
+                              <TextField layoutX="142.0" layoutY="168.0" />
+                              <Button layoutX="120.0" layoutY="51.0" mnemonicParsing="false" text="Carregar Imagem" />
+                              <Label layoutX="26.0" layoutY="221.0" text="Relação Sinal Ruído:" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Uniformidade">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="589.0" prefWidth="847.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="9.0" layoutY="293.0" prefHeight="244.0" prefWidth="832.0">
+                                 <children>
+                                    <LineChart layoutX="-36.0" layoutY="-107.0" prefHeight="293.0" prefWidth="832.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <xAxis>
+                                          <CategoryAxis side="BOTTOM" />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis side="LEFT" />
+                                       </yAxis>
+                                    </LineChart>
+                                 </children>
+                              </AnchorPane>
+                              <ImageView disable="true" fitHeight="246.0" fitWidth="371.0" layoutX="462.0" layoutY="38.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../Barras/imagemEditada.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="462.0" layoutY="14.0" text="Preview" />
+                              <Label layoutX="26.0" layoutY="134.0" text="Espessura da Barra" />
+                              <TextField layoutX="142.0" layoutY="130.0" />
+                              <Label layoutX="26.0" layoutY="172.0" text="Tamanho Perfil" />
+                              <TextField layoutX="142.0" layoutY="168.0" />
+                              <Button layoutX="120.0" layoutY="51.0" mnemonicParsing="false" text="Carregar Imagem" />
+                              <Label layoutX="26.0" layoutY="221.0" text="Relação Sinal Ruído:" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Velocidade de Mesa">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="589.0" prefWidth="847.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="9.0" layoutY="293.0" prefHeight="244.0" prefWidth="832.0">
+                                 <children>
+                                    <LineChart layoutX="-36.0" layoutY="-107.0" prefHeight="293.0" prefWidth="832.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <xAxis>
+                                          <CategoryAxis side="BOTTOM" />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis side="LEFT" />
+                                       </yAxis>
+                                    </LineChart>
+                                 </children>
+                              </AnchorPane>
+                              <ImageView disable="true" fitHeight="246.0" fitWidth="371.0" layoutX="462.0" layoutY="38.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../Barras/imagemEditada.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="462.0" layoutY="14.0" text="Preview" />
+                              <Label layoutX="26.0" layoutY="134.0" text="Espessura da Barra" />
+                              <TextField layoutX="142.0" layoutY="130.0" />
+                              <Label layoutX="26.0" layoutY="172.0" text="Tamanho Perfil" />
+                              <TextField layoutX="142.0" layoutY="168.0" />
+                              <Button layoutX="120.0" layoutY="51.0" mnemonicParsing="false" text="Carregar Imagem" />
+                              <Label layoutX="26.0" layoutY="221.0" text="Relação Sinal Ruído:" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Densidade">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="589.0" prefWidth="847.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="9.0" layoutY="293.0" prefHeight="244.0" prefWidth="832.0">
+                                 <children>
+                                    <LineChart layoutX="-36.0" layoutY="-107.0" prefHeight="293.0" prefWidth="832.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <xAxis>
+                                          <CategoryAxis side="BOTTOM" />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis side="LEFT" />
+                                       </yAxis>
+                                    </LineChart>
+                                 </children>
+                              </AnchorPane>
+                              <ImageView disable="true" fitHeight="246.0" fitWidth="371.0" layoutX="462.0" layoutY="38.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../Barras/imagemEditada.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="462.0" layoutY="14.0" text="Preview" />
+                              <Label layoutX="26.0" layoutY="134.0" text="Espessura da Barra" />
+                              <TextField layoutX="142.0" layoutY="130.0" />
+                              <Label layoutX="26.0" layoutY="172.0" text="Tamanho Perfil" />
+                              <TextField layoutX="142.0" layoutY="168.0" />
+                              <Button layoutX="120.0" layoutY="51.0" mnemonicParsing="false" text="Carregar Imagem" />
+                              <Label layoutX="26.0" layoutY="221.0" text="Relação Sinal Ruído:" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Resoluçao Espacial">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="589.0" prefWidth="847.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="9.0" layoutY="293.0" prefHeight="244.0" prefWidth="832.0">
+                                 <children>
+                                    <LineChart layoutX="-36.0" layoutY="-107.0" prefHeight="293.0" prefWidth="832.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <xAxis>
+                                          <CategoryAxis side="BOTTOM" />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis side="LEFT" />
+                                       </yAxis>
+                                    </LineChart>
+                                 </children>
+                              </AnchorPane>
+                              <ImageView disable="true" fitHeight="246.0" fitWidth="371.0" layoutX="462.0" layoutY="38.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../Barras/imagemEditada.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="462.0" layoutY="14.0" text="Preview" />
+                              <Label layoutX="26.0" layoutY="134.0" text="Espessura da Barra" />
+                              <TextField layoutX="142.0" layoutY="130.0" />
+                              <Label layoutX="26.0" layoutY="172.0" text="Tamanho Perfil" />
+                              <TextField layoutX="142.0" layoutY="168.0" />
+                              <Button layoutX="120.0" layoutY="51.0" mnemonicParsing="false" text="Carregar Imagem" />
+                              <Label layoutX="26.0" layoutY="221.0" text="Relação Sinal Ruído:" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Radiação de Fundo">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="589.0" prefWidth="847.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="9.0" layoutY="293.0" prefHeight="244.0" prefWidth="832.0">
+                                 <children>
+                                    <LineChart layoutX="-36.0" layoutY="-107.0" prefHeight="293.0" prefWidth="832.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <xAxis>
+                                          <CategoryAxis side="BOTTOM" />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis side="LEFT" />
+                                       </yAxis>
+                                    </LineChart>
+                                 </children>
+                              </AnchorPane>
+                              <ImageView disable="true" fitHeight="246.0" fitWidth="371.0" layoutX="462.0" layoutY="38.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../Barras/imagemEditada.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="462.0" layoutY="14.0" text="Preview" />
+                              <Label layoutX="26.0" layoutY="134.0" text="Espessura da Barra" />
+                              <TextField layoutX="142.0" layoutY="130.0" />
+                              <Label layoutX="26.0" layoutY="172.0" text="Tamanho Perfil" />
+                              <TextField layoutX="142.0" layoutY="168.0" />
+                              <Button layoutX="120.0" layoutY="51.0" mnemonicParsing="false" text="Carregar Imagem" />
+                              <Label layoutX="26.0" layoutY="221.0" text="Relação Sinal Ruído:" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Sensibilidade">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="589.0" prefWidth="847.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="9.0" layoutY="293.0" prefHeight="244.0" prefWidth="832.0">
+                                 <children>
+                                    <LineChart layoutX="-36.0" layoutY="-107.0" prefHeight="293.0" prefWidth="832.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <xAxis>
+                                          <CategoryAxis side="BOTTOM" />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis side="LEFT" />
+                                       </yAxis>
+                                    </LineChart>
+                                 </children>
+                              </AnchorPane>
+                              <ImageView disable="true" fitHeight="246.0" fitWidth="371.0" layoutX="462.0" layoutY="38.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../Barras/imagemEditada.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="462.0" layoutY="14.0" text="Preview" />
+                              <Label layoutX="26.0" layoutY="134.0" text="Espessura da Barra" />
+                              <TextField layoutX="142.0" layoutY="130.0" />
+                              <Label layoutX="26.0" layoutY="172.0" text="Tamanho Perfil" />
+                              <TextField layoutX="142.0" layoutY="168.0" />
+                              <Button layoutX="120.0" layoutY="51.0" mnemonicParsing="false" text="Carregar Imagem" />
+                              <Label layoutX="26.0" layoutY="221.0" text="Relação Sinal Ruído:" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <bottom>
+      <Pane prefHeight="46.0" prefWidth="847.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="85.0" layoutX="7.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Imagens/ufmg.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="36.0" fitWidth="47.0" layoutX="101.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Imagens/medicina.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="46.0" fitWidth="72.0" layoutX="138.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Imagens/fapemig.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="33.0" fitWidth="61.0" layoutX="199.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Imagens/Sus.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </bottom>
+</BorderPane>

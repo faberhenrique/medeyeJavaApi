@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ufmgimagens.testeController">
+   <left>
+      <TextArea fx:id="textData" prefHeight="168.0" prefWidth="261.0" BorderPane.alignment="CENTER" />
+   </left>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <bottom>
+      <Pane minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="31.0" fitWidth="101.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/ufmg.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="48.0" fitWidth="72.0" layoutX="98.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Imagens/fapemig.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </bottom>
+   <right>
+      <Pane prefHeight="168.0" prefWidth="257.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imagemCarregada" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+   </right>
+   <center>
+      <ScrollPane fx:id="scrollTeste" prefHeight="168.0" prefWidth="379.0" BorderPane.alignment="CENTER">
+         <content>
+            <AnchorPane fx:id="graficoA" />
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
