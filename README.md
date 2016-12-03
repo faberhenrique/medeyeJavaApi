@@ -2,10 +2,10 @@
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
-### What is this repository for? PPSUS Project
+### What is this repository for? P
 
-* Quick summary
-* Version
+* PSUS Project
+* 1.0
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 ### How do I get set up? ###
@@ -25,5 +25,5 @@ This README would normally document whatever steps are necessary to get your app
 
 ### Who do I talk to? FABER HENRIQUE
 
-* Repo owner or admin
-* Other community or team contact
+* Faber Henrique
+* Marcelo Mamede
