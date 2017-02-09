@@ -6,7 +6,7 @@
 package ufmgimagens;
 
 import Util.Math.FWHM;
-import Util.image;
+import Util.PpsusImage;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import testes.uniformidade;
 
 /**
  *
@@ -28,13 +29,14 @@ public class inicio extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
       
-        image aux = new image("SENS_LEHR_F_F001_DS.dcm");
-        aux.SumImages("RES_LINF2_F001_DS.dcm");
-        aux.SumImage();
-        int inicio = (int) (aux.getWidth()*0.125);
-        int fim = (int) (aux.getWidth()*0.375);
-        FWHM estatistica = new FWHM(aux.profileHori(inicio,inicio,fim,fim));
-        System.out.println(estatistica.calcFWHM());
+        PpsusImage aux = new PpsusImage("UNIF_LEHR_E001_DS.dcm");
+        uniformidade uni = new uniformidade(aux);
+        //aux.SumImages("RES_LINF2_F001_DS.dcm");
+       // aux.SumImage();
+       // int inicio = (int) (aux.getWidth()*0.125);
+       // int fim = (int) (aux.getWidth()*0.375);
+       // FWHM estatistica = new FWHM(aux.profileHori(inicio,inicio,fim,fim));
+       // System.out.println(estatistica.calcFWHM());
 //        
 //        Parent root = FXMLLoader.load(getClass().getResource("teste.fxml"));
 //        

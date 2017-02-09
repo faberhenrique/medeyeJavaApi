@@ -14,13 +14,14 @@ import ij.process.Blitter;
 import ij.process.ImageProcessor;
 import ij.util.DicomTools;
 import java.io.IOException;
+import Util.Hough_Circles;
 
 /**
  * Class responsable by load an image and create his methods
  * @version 0.1
  * @author Faber Henrique
  */
-public class image {
+public class PpsusImage {
 
     private ImagePlus image = null;
     private double result_bin[][];
@@ -41,7 +42,7 @@ public class image {
     * Class constructor.
      * @param path
     */
-    public image(String path) {
+    public PpsusImage(String path) {
         if (image == null) {
             image = IJ.openImage(path);
             cali = image.getCalibration();
@@ -156,7 +157,7 @@ public class image {
         return sum_vet;
     }
         //Method that traces profile to check vertical bars
-        public double[] profileHori(int lineI,int colI,int lineF, int colF){
+    public double[] profileHori(int lineI,int colI,int lineF, int colF){
         double sum_vet[]=new double[colF-colI];
         int aux = 0;
         for ( int col = colI; col < colF; col++) {
@@ -190,6 +191,25 @@ public class image {
         }
 
     }
-    
+    public Hough_Circles circles(){
+        Hough_Circles circ = new Hough_Circles();
+        circ.run(image.getProcessor());              
+        return circ;
+    }
+    public double[][] getVector(){
+        double[][] values = new double [image.getWidth()][image.getHeight()];
 
+        for (int line = 0; line < image.getWidth(); line++) {
+            for (int col = 0; col < image.getHeight(); col++) {
+                //Retriving the values               
+                    values[line][col] = cali.getCValue((image.getPixel(line, col))[0]);
+                
+
+            }
+        }
+
+        
+        return values;
+        
+    }
 }
