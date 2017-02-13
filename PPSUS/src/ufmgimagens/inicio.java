@@ -5,20 +5,13 @@
  */
 package ufmgimagens;
 
-import Util.Math.FWHM;
 import Util.PpsusImage;
 import java.io.IOException;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
+import javafx.application.Platform;
 import javafx.stage.Stage;
-import testes.uniformidade;
+import tests.FloodSpeed;
+import tests.ScaleSpeed;
 
 /**
  *
@@ -27,10 +20,17 @@ import testes.uniformidade;
 public class inicio extends Application {
     
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) throws IOException, Exception {
       
-        PpsusImage aux = new PpsusImage("UNIF_LEHR_E001_DS.dcm");
-        uniformidade uni = new uniformidade(aux);
+        //PpsusImage aux = new PpsusImage("UNIF_LEHR_E001_DS.dcm");
+        //Uniformity uni = new Uniformity(aux);
+        //Teste de velocidade regua        
+        PpsusImage aux = new PpsusImage("VEL_REGUA_E001_DS.dcm");
+        ScaleSpeed spe = new ScaleSpeed(aux, 0, 0);
+        //Teste de velocidade Flood
+        aux = new PpsusImage("VEL_FLOOD_E001_DS.dcm");
+        FloodSpeed flo = new FloodSpeed(aux);
+        
         //aux.SumImages("RES_LINF2_F001_DS.dcm");
        // aux.SumImage();
        // int inicio = (int) (aux.getWidth()*0.125);
@@ -49,6 +49,7 @@ public class inicio extends Application {
 //        primaryStage.setTitle("PPSUS-Medicina Nuclear");
 //        primaryStage.setScene(scene);
 //        primaryStage.show();
+    Platform.exit();
     }
 
     /**

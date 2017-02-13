@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testes;
+package tests;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -17,13 +17,13 @@ import org.tc33.jheatchart.HeatChart;
  *
  * @author faber.henrique
  */
-public class backgroud {
+public class Background {
 
     private static BufferedImage matrizI;
     private  int largura;
     private int altura;
 
-    public backgroud(BufferedImage imagem, int largura,int altura) {
+    public Background(BufferedImage imagem, int largura,int altura) {
         matrizI = imagem;
         this.largura=largura;
         this.altura = altura;
@@ -58,7 +58,7 @@ map.setLowValueColour(Color.BLUE);
             // Step 3: Output the chart to a file.
             map.saveToFile(new File("java-heat-chart.png"));
         } catch (IOException ex) {
-            Logger.getLogger(uniformidade.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Uniformity.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }

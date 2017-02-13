@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testes;
+package tests;
+
+
 
 /**
  *
- * @author Casa
+ * @author faber.henrique
  */
-import Util.Hough_Circles;
-public class angulation {
-    
+public class Resolution {
+
+  
 }

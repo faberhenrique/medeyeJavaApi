@@ -35,9 +35,9 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 import org.dcm4che3.imageio.plugins.dcm.DicomImageReadParam;
-import testes.backgroud;
-import testes.sensibilidade;
-import testes.uniformidade;
+import tests.Background;
+import tests.Sensibility;
+import tests.Uniformity;
 
 //IMAGEJ FILES
 
@@ -178,7 +178,7 @@ public class testeController extends ApplicationFrame implements Initializable {
         try {
             matrizI = ImageIO.read(new File("test.jpg"));
            // uniformidade teste = new uniformidade(matrizI, largura, altura);
-            backgroud teste = new backgroud(matrizI, largura, altura);
+            Background teste = new Background(matrizI, largura, altura);
             for (int cont : valores) {
                 valores[cont] = 0;
             }
@@ -335,10 +335,10 @@ File output = new File("imagemEditada.png");
 
         try {
             matrizI = ImageIO.read(new File("test.jpg"));
-            sensibilidade teste = new sensibilidade(matrizI, largura, altura);
+            Sensibility teste = new Sensibility(matrizI, largura, altura);
             teste.calcula(imp, u);
             //radiacaoFundo teste = new radiacaoFundo(matrizI, largura, altura);
-            uniformidade aux31 = new uniformidade(matrizI, largura, altura);
+            Uniformity aux31 = new Uniformity(matrizI, largura, altura);
             for (int cont : valores) {
                 valores[cont] = 0;
             }

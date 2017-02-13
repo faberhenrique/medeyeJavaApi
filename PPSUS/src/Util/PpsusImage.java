@@ -14,7 +14,6 @@ import ij.process.Blitter;
 import ij.process.ImageProcessor;
 import ij.util.DicomTools;
 import java.io.IOException;
-import Util.Hough_Circles;
 
 /**
  * Class responsable by load an image and create his methods
@@ -176,15 +175,15 @@ public class PpsusImage {
         if (sum == 0) {
             SumImage();
         }
-        result_bin = new double[image.getHeight()][image.getWidth()];
+        result_bin = new double[image.getWidth()][image.getHeight()];
 
-        for (int line = 0; line < image.getWidth(); line++) {
-            for (int col = 0; col < image.getHeight(); col++) {
+        for (int col = 0; col < image.getWidth(); col++) {
+            for (int lin = 0; lin < image.getHeight(); lin++) {
                 //Testing if value is lower than average
-                if (cali.getCValue((image.getPixel(line, col))[0]) > avg) {
-                    result_bin[line][col] = cali.getCValue((image.getPixel(line, col))[0]);
+                if (cali.getCValue((image.getPixel(col,lin))[0]) > avg) {
+                    result_bin[col][lin] = cali.getCValue((image.getPixel(col,lin))[0]);
                 } else {
-                    result_bin[line][col] = 0;
+                    result_bin[col][lin] = 0;
                 }
 
             }
@@ -196,20 +195,24 @@ public class PpsusImage {
         circ.run(image.getProcessor());              
         return circ;
     }
-    public double[][] getVector(){
+    public double[][] getMatrix(){
+                System.out.println(image.getHeight());
+        System.out.println(image.getWidth());
+
         double[][] values = new double [image.getWidth()][image.getHeight()];
 
-        for (int line = 0; line < image.getWidth(); line++) {
-            for (int col = 0; col < image.getHeight(); col++) {
+        for (int col = 0; col < image.getWidth(); col++) {
+            for (int line = 0; line < image.getHeight(); line++) {
                 //Retriving the values               
-                    values[line][col] = cali.getCValue((image.getPixel(line, col))[0]);
-                
-
+                    values[col][line] = cali.getCValue((image.getPixel(col, line))[0]);                
             }
         }
 
         
         return values;
         
+    }
+    public double getValue(int x, int y){
+        return cali.getCValue((image.getPixel(x,y))[0]);
     }
 }

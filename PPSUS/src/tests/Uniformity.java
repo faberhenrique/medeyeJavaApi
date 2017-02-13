@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testes;
+package tests;
 
 import Util.PpsusImage;
 import java.awt.Color;
@@ -23,7 +23,7 @@ import org.tc33.jheatchart.HeatChart;
  *
  * @author faber.henrique
  */
-public class uniformidade {
+public class Uniformity {
 
     private static BufferedImage matrizI;
     private int largura;
@@ -33,7 +33,7 @@ public class uniformidade {
     double max=Double.MIN_VALUE;
     double min = Double.MAX_VALUE;
 
-    public uniformidade(BufferedImage imagem, int largura, int altura) {
+    public Uniformity(BufferedImage imagem, int largura, int altura) {
         matrizI = imagem;
         this.largura = largura;
         this.altura = altura;
@@ -41,7 +41,7 @@ public class uniformidade {
         Heatmap();
     }
 
-    public uniformidade(PpsusImage ppImage) throws IOException {
+    public Uniformity(PpsusImage ppImage) throws IOException {
         this.ppImage = ppImage;
         smoothUFOV();
     }
@@ -71,13 +71,13 @@ public class uniformidade {
             // Step 3: Output the chart to a file.
             map.saveToFile(new File("java-heat-chart.png"));
         } catch (IOException ex) {
-            Logger.getLogger(uniformidade.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Uniformity.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
     private void smoothUFOV() throws IOException {
-        data = ppImage.getVector();
+        data = ppImage.getMatrix();
 
         int limit = (int) (data.length - (data.length * 0.75)) / 2;
 
