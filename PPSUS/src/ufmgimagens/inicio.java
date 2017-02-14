@@ -11,6 +11,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import tests.FloodSpeed;
+import tests.Resolution;
 import tests.ScaleSpeed;
 
 /**
@@ -30,7 +31,8 @@ public class inicio extends Application {
         //Teste de velocidade Flood
         aux = new PpsusImage("VEL_FLOOD_E001_DS.dcm");
         FloodSpeed flo = new FloodSpeed(aux);
-        
+        aux = new PpsusImage("RES_LINF2_F001_DS.dcm");
+        Resolution reso = new Resolution(aux);
         //aux.SumImages("RES_LINF2_F001_DS.dcm");
        // aux.SumImage();
        // int inicio = (int) (aux.getWidth()*0.125);

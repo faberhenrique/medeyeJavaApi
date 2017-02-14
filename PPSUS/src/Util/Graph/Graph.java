@@ -21,15 +21,15 @@ import org.jfree.data.category.DefaultCategoryDataset;
  *
  * @author Casa
  */
-public class graph {
+public class Graph {
         final NumberAxis xAxis;
         final NumberAxis yAxis;
 
-    public graph(){ 
+    public Graph(){ 
        xAxis = new NumberAxis();
        yAxis = new NumberAxis();
     }
-    public void createLineChart(int [] values,String title,String xlabel,String ylabel){
+    public void createLineChart(double [] values,String title,String xlabel,String ylabel){
         //defining the axes
         xAxis.setLabel(xlabel);
        // yAxis.setLabel(ylabel);
@@ -67,7 +67,7 @@ public class graph {
 
       int width = 640; /* Width of the image */
       int height = 480; /* Height of the image */ 
-      File lineChart = new File( "LineChart.jpeg" ); 
+      File lineChart = new File( title+".jpeg" ); 
       ChartUtilities.saveChartAsJPEG(lineChart ,lineChartObject, width ,height);
     }
 }

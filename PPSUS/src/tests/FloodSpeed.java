@@ -5,7 +5,7 @@
  */
 package tests;
 
-import Util.Graph.graph;
+import Util.Graph.Graph;
 import Util.PpsusImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class FloodSpeed {
     }
 
     private void saveImage(double[] values) throws IOException {
-        graph chart = new graph();
+        Graph chart = new Graph();
         chart.lineChart(values, "Flood Profile", "Point", "Total Count");
     }
 }
