@@ -6,10 +6,10 @@
 package tests;
 
 import Util.PpsusImage;
+import Util.Report;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.awt.image.IndexColorModel;
-import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
@@ -28,11 +28,13 @@ public class Uniformity {
     private static BufferedImage matrizI;
     private int largura;
     private int altura;
-    private PpsusImage ppImage;
+    private PpsusImage image;
     double[][] data;
     double max=Double.MIN_VALUE;
     double min = Double.MAX_VALUE;
-
+    String result = "===================================================================================================================================================================================================================================================\n"
+                + "																			RESULTADO TESTE DE UNIFORMIDADE\n"
+                + "===================================================================================================================================================================================================================================================\n";
     public Uniformity(BufferedImage imagem, int largura, int altura) {
         matrizI = imagem;
         this.largura = largura;
@@ -42,12 +44,15 @@ public class Uniformity {
     }
 
     public Uniformity(PpsusImage ppImage) throws IOException {
-        this.ppImage = ppImage;
+        this.image = ppImage;
         smoothUFOV();
+        matrizI = ppImage.getImage().getBufferedImage();
+        Heatmap();
+        printResult();
     }
 
     private void Heatmap() {
-        double[][] data = new double[largura][altura];
+        double[][] data = image.getMatrix();
         int[] pixel;
 
         for (int linha = 0; linha < largura; linha++) {
@@ -69,7 +74,7 @@ public class Uniformity {
 
         try {
             // Step 3: Output the chart to a file.
-            map.saveToFile(new File("java-heat-chart.png"));
+            map.saveToFile(new File(image.getInfo("103E")+".png"));
         } catch (IOException ex) {
             Logger.getLogger(Uniformity.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -77,7 +82,7 @@ public class Uniformity {
     }
 
     private void smoothUFOV() throws IOException {
-        data = ppImage.getMatrix();
+        data = image.getMatrix();
 
         int limit = (int) (data.length - (data.length * 0.75)) / 2;
 
@@ -98,7 +103,7 @@ public class Uniformity {
             }
         }
         
-        System.out.println("Intergra Uniformity = "+100*((max-min)/(max+min)));
+        addResult("Intergra Uniformity = "+100*((max-min)/(max+min)));
         System.out.println("fim");
         //getImageFromArray(data, "teste.jpg");
 
@@ -155,5 +160,14 @@ public class Uniformity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+            private void addResult(String data){
+        
+        result = result+data+"\n";
+    }
+    private void printResult(){
+        Report r = Report.getInstance();
+        r.addResult(result);
+        
     }
 }

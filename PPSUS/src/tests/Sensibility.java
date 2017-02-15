@@ -1,10 +1,12 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package tests;
 
+import Util.PpsusImage;
+import Util.Report;
 import ij.ImagePlus;
 import ij.measure.Calibration;
 import java.awt.Color;
@@ -13,93 +15,77 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import org.tc33.jheatchart.HeatChart;
 
 /**
  *
  * @author faber.henrique
  */
-public class Sensibility {
+public final class Sensibility {
+    private final PpsusImage image;
+    private double acitivity;
+        String result = "===================================================================================================================================================================================================================================================\n"
+                + "																			RESULTADO TESTE DE SENSIBILIDADE\n"
+                + "===================================================================================================================================================================================================================================================\n";
 
-    private static BufferedImage matrixI;
-    private  int width;
-    private int height;
-    private double media;
 
-    public Sensibility(BufferedImage image, int width,int height) {
-        matrixI = image;
-        this.width=width;
-        this.height = height; 
-        binarizarImagem();
-        Heatmap();
+    public Sensibility(PpsusImage image, double activity) {
+        this.image = image;
+        this.acitivity = activity;
+        executeTest();
+        printResult();
     }
-    
-    private void Heatmap(){
-        double[][] data = new double[width][height];
-        int[] pixel;
-        int soma=0;
-
-         for (int line = 0; line < width; line++) {
-                for (int column = 0; column < height; column++) {
-                    pixel = matrixI.getRaster().getPixel(line, column, new int[3]);
-                   soma=soma+pixel[0] ;
-                    
-                }
+    public void executeTest(){
+        image.BinarizeImage();
+        double[][] imageBin = image.getBin();
+        double sum = 0;
+        for (double[] imageBin1 : imageBin) {
+            for (int j = 0; j < imageBin1.length; j++) {
+                sum = sum + imageBin1[j];
             }
-         System.out.println("Valor de toda a image ="+soma);
-         // Step 1: Create our heat map chart using our data.
-        HeatChart map = new HeatChart(data);
-        map.setHighValueColour(Color.RED);
-        map.setLowValueColour(Color.BLUE);
-        // Step 2: Customise the chart.
-        //map.setTitle("This is my heat chart title");
-        //map.setXAxisLabel("X Axis");
-        //map.setYAxisLabel("Y Axis");
-
-        try {
-            // Step 3: Output the chart to a file.
-            map.saveToFile(new File("java-heat-chart.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Uniformity.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        addResult("CONTAGEM TOTAL ="+sum);
+        double taxa = (sum/100/1000);
+        addResult("TAXA (Kctg/seg) = "+ taxa);
+        addResult("TAXA (Kcpm/mCi) ="+(taxa*6000)/acitivity/1000);
+        teste(imageBin);
+    
     }
+   private void teste(double [][] yourmatrix){
+         for (int line = (int)(image.getWidth() * 0.125); line < image.getWidth() * 0.25; line++) 
+         for ( int col = (int)(image.getHeight() * 0.5); col < image.getHeight() * 0.625; col++) 
+                    yourmatrix[line][col]=0;
+         
+            
 
-    private void binarizarImagem() {
-        int[] pixel;
-        int soma=0;
-        int cont = 0;
-
-         for (int line = 0; line < width; line++) {
-                for (int column = 0; column < height; column++) {
-                    pixel = matrixI.getRaster().getPixel(line, column, new int[3]);
-                    if(pixel[0]>0){
-                    soma=soma+pixel[0] ;
-                    cont++;
-                    }
+        
+        
+        try {
+            BufferedImage image = new BufferedImage(yourmatrix.length,yourmatrix[0].length,BufferedImage.TYPE_INT_ARGB);
+            for (int i = 0; i < yourmatrix.length; i++) {
+                for (int j = 0; j < yourmatrix[i].length; j++) {
+                    int a = (int) yourmatrix[i][j];
+                    Color newColor = new Color(a, a, a);
+                    image.setRGB(j, i, newColor.getRGB());
                 }
             }
-         media = soma/cont; 
+            File output = new File("Sensibilidade.jpg");
+            ImageIO.write(image, "jpg", output);
+        } catch (Exception e) {
+                    System.out.println(e);
+
+        }
     }
-    public double getMedia(){
-        return media;
+
+        private void addResult(String data){
+        
+        result = result+data+"\n";
     }
-    public void calcula(ImagePlus img,Calibration cal){
-         int[] t;
-         double aux;
-double soma = 0;
-          for (int line = 0; line < width; line++) {
-                for (int column = 0; column < height; column++) {
-                    
-                     t = img.getPixel(column,line);
-                     aux = cal.getCValue(t[0]);
-                     if(aux>0)
-                     soma = soma + aux;
-                    
-                    
-                }
-          }
-          System.out.println("VALOR TOTAL IMAGEJ="+soma);
+    private void printResult(){
+        Report r = Report.getInstance();
+        r.addResult(result);
+        
     }
 }
 /*

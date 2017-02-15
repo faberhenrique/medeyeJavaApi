@@ -13,7 +13,12 @@ import ij.plugin.RGBStackMerge;
 import ij.process.Blitter;
 import ij.process.ImageProcessor;
 import ij.util.DicomTools;
+import java.awt.image.BufferedImage;
+import java.awt.image.WritableRaster;
+import java.io.File;
 import java.io.IOException;
+import javax.imageio.ImageIO;
+import sun.awt.image.WritableRasterNative;
 
 /**
  * Class responsable by load an image and create his methods
@@ -55,6 +60,9 @@ public class PpsusImage {
             sum = 0;
         }
 
+    }
+    public double [][] getBin(){
+        return result_bin;
     }
     public int getWidth(){
         return image.getWidth();
@@ -143,7 +151,7 @@ public class PpsusImage {
         }
     }
     //Method that traces profile to check horizontal bars
-    public double [] profileVet(int lineI,int colI,int lineF, int colF) {
+    public double [] profileHori(int lineI,int colI,int lineF, int colF) {
         double sum_vet[]=new double[colF-colI];
         int aux = 0;
         for (int line = lineI; line < lineF; line++) {
@@ -156,7 +164,7 @@ public class PpsusImage {
         return sum_vet;
     }
         //Method that traces profile to check vertical bars
-    public double[] profileHori(int lineI,int colI,int lineF, int colF){
+    public double[] profileVert(int lineI,int colI,int lineF, int colF){
         double sum_vet[]=new double[colF-colI];
         int aux = 0;
         for ( int col = colI; col < colF; col++) {
@@ -214,5 +222,16 @@ public class PpsusImage {
     }
     public double getValue(int x, int y){
         return cali.getCValue((image.getPixel(x,y))[0]);
+    }
+     public  void toPng( String name) throws IOException {
+        
+        BufferedImage file  = image.getBufferedImage();
+
+        try {
+            File ouptut = new File(name+".png");
+            ImageIO.write(file, "png", ouptut);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

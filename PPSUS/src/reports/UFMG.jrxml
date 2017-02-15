@@ -13,7 +13,7 @@
 		<band height="50" splitType="Stretch">
 			<image hAlign="Center" vAlign="Middle">
 				<reportElement x="12" y="0" width="530" height="50" uuid="186a691a-8f62-43c6-9618-675d1f2eefc5"/>
-				<imageExpression><![CDATA["header.png"]]></imageExpression>
+				<imageExpression><![CDATA["Cabeçalho.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>

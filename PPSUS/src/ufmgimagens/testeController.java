@@ -2,7 +2,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+ 
 package ufmgimagens;
 
 import com.pixelmed.dicom.Attribute;
@@ -50,7 +50,7 @@ import ij.process.FloatProcessor;
 /**
  *
  * @author Casa
- */
+ 
 
 
 public class testeController extends ApplicationFrame implements Initializable {
@@ -77,7 +77,7 @@ public class testeController extends ApplicationFrame implements Initializable {
         imagemCarregada.setImage(geraImagem2());
       calculaVetorBarras();
      //calculaVetor();
-     calculaVetorMedia();
+   //  calculaVetorMedia();
     }
 
     private String carregarDados() {
@@ -324,7 +324,7 @@ File output = new File("imagemEditada.png");
             Logger.getLogger(testeController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    private void calculaVetorMedia() {
+   /* private void calculaVetorMedia() {
 
         int[] pixel;
         int largura = img.getHeight();
@@ -335,8 +335,8 @@ File output = new File("imagemEditada.png");
 
         try {
             matrizI = ImageIO.read(new File("test.jpg"));
-            Sensibility teste = new Sensibility(matrizI, largura, altura);
-            teste.calcula(imp, u);
+      //      Sensibility teste = new Sensibility(matrizI, largura, altura);
+        //    teste.calcula(imp, u);
             //radiacaoFundo teste = new radiacaoFundo(matrizI, largura, altura);
             Uniformity aux31 = new Uniformity(matrizI, largura, altura);
             for (int cont : valores) {
@@ -394,5 +394,5 @@ File output = new File("imagemEditada.png");
     }
 
 }
-
+*/
 
