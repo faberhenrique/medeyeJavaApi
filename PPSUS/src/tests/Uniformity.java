@@ -9,13 +9,10 @@ import Util.PpsusImage;
 import Util.Report;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-import java.awt.image.IndexColorModel;
-import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.image.Image;
 import javax.imageio.ImageIO;
 import org.tc33.jheatchart.HeatChart;
 
@@ -32,6 +29,8 @@ public class Uniformity {
     double[][] data;
     double max=Double.MIN_VALUE;
     double min = Double.MAX_VALUE;
+    double maxDiff = Integer.MIN_VALUE;
+    double minDiff =0;
     String result = "===================================================================================================================================================================================================================================================\n"
                 + "																			RESULTADO TESTE DE UNIFORMIDADE\n"
                 + "===================================================================================================================================================================================================================================================\n";
@@ -46,8 +45,10 @@ public class Uniformity {
     public Uniformity(PpsusImage ppImage) throws IOException {
         this.image = ppImage;
         smoothUFOV();
+        getImageFromArray(data);
+        diffUniformity();
         matrizI = ppImage.getImage().getBufferedImage();
-        Heatmap();
+//        Heatmap();
         printResult();
     }
 
@@ -129,36 +130,71 @@ public class Uniformity {
         if(data[lin][col]< min)
             min = data[lin][col];
     }
+    
+    private void diffUniformity(){
+        int limit = (int) (data.length - (data.length * 0.75)) / 2;
 
-    public static void getImageFromArray(double[][] pxls, String path) throws IOException {
-
-        File file = new File("modelo.png");
-        BufferedImage img = null;
-
-        img = ImageIO.read(file);
-
-        int width = img.getWidth();
-        int height = img.getHeight();
-
-        WritableRaster raster1 = (WritableRaster) img.getRaster();
-        double aux;
-        for (int i = 0; i < pxls.length; i++) {
-            for (int j = 0; j < pxls[0].length; j++) {
-                aux = pxls[i][j];
-
-                raster1.setSample(i, j, 0, aux);
-
+        for(int lin = 0;lin < data.length;lin+=5){
+            for(int col = 0;col<data[0].length;col+=5){
+              if (!((lin < limit || col < limit) || (lin > data.length - limit || col > data.length - limit))) 
+        
+                calcDiff(lin,col);
             }
+                               addResult("Differential uniformity="+100 * ((maxDiff-minDiff)/(maxDiff+minDiff)));
+
+            
         }
 
-        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
-        image.setData(raster1);
+    }
+    private void calcDiff(int x, int y) {
+        double []lineDiff = new double [5];
+        double []colDiff = new double [5];
+        for(int lin=0;lin<5;lin++){
+            for(int col = 0;col<5;col++){
+                lineDiff[col]=data[x+lin][y+col];
+                colDiff[col]=data[x+col][y+lin];             
+            }
+            getMaxMin(lineDiff);
+            getMaxMin(colDiff);
 
+        }
+    }
+    private void getMaxMin(double []values){
+        double aux = Integer.MIN_VALUE;
+            for(int diff = 1;diff<values.length;diff++){
+             
+                if(values[0]-values[diff]>aux){
+                    aux = values[0]-values[diff];
+                    
+                }
+               
+            }
+             if(aux > maxDiff)
+                    maxDiff = aux;
+                if(aux < minDiff)
+                    minDiff = aux;
+    }
+    
+    public  void getImageFromArray(double [][] yourmatrix) throws IOException {
+       
+            
+
+        
+        
         try {
-            File ouptut = new File("change.png");
-            ImageIO.write(image, "png", ouptut);
+            BufferedImage image = new BufferedImage(yourmatrix.length,yourmatrix[0].length,BufferedImage.TYPE_INT_ARGB);
+            for (int i = 0; i < yourmatrix.length; i++) {
+                for (int j = 0; j < yourmatrix[i].length; j++) {
+                    int a = (int) Math.round(255/(yourmatrix[i][j]+1));
+                    Color newColor = new Color(a, a, a);
+                    image.setRGB(j, i, newColor.getRGB());
+                }
+            }
+            File output = new File("GrayScale3.jpg");
+            ImageIO.write(image, "jpg", output);
         } catch (Exception e) {
-            e.printStackTrace();
+                    System.out.println(e);
+
         }
     }
             private void addResult(String data){
@@ -170,4 +206,6 @@ public class Uniformity {
         r.addResult(result);
         
     }
+
+
 }

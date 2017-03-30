@@ -7,16 +7,10 @@ package tests;
 
 import Util.PpsusImage;
 import Util.Report;
-import ij.ImagePlus;
-import ij.measure.Calibration;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import org.tc33.jheatchart.HeatChart;
 
 /**
  *
@@ -56,11 +50,7 @@ public final class Sensibility {
          for (int line = (int)(image.getWidth() * 0.125); line < image.getWidth() * 0.25; line++) 
          for ( int col = (int)(image.getHeight() * 0.5); col < image.getHeight() * 0.625; col++) 
                     yourmatrix[line][col]=0;
-         
-            
-
-        
-        
+                 
         try {
             BufferedImage image = new BufferedImage(yourmatrix.length,yourmatrix[0].length,BufferedImage.TYPE_INT_ARGB);
             for (int i = 0; i < yourmatrix.length; i++) {

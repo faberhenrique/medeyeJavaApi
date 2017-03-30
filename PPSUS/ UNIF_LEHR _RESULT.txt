@@ -1,0 +1,63 @@
+===================================================================================================================================================================================================================================================
+																			RELATÓRIO DE TESTES UFMG PPSUS
+===================================================================================================================================================================================================================================================
+Data: 2017/03/29 20:57:35
+
+
+===================================================================================================================================================================================================================================================
+																			RESULTADO TESTE DE UNIFORMIDADE
+===================================================================================================================================================================================================================================================
+Intergra Uniformity = 55.19013711926751
+Differential uniformity=-0.0
+Differential uniformity=-0.0
+Differential uniformity=-0.0
+Differential uniformity=-0.0
+Differential uniformity=-0.0
+Differential uniformity=-0.0
+Differential uniformity=-0.0
+Differential uniformity=-100.00000000166452
+Differential uniformity=-100.00000000175481
+Differential uniformity=-100.00000000175481
+Differential uniformity=-100.00000000227027
+Differential uniformity=-100.00000000227027
+Differential uniformity=-100.00000000227027
+Differential uniformity=-100.00000000227027
+Differential uniformity=-100.00000000227027
+Differential uniformity=-100.00000000227027
+Differential uniformity=-100.00000000227027
+Differential uniformity=-100.00000000227038
+Differential uniformity=-100.00000000227038
+Differential uniformity=-100.00000000227038
+Differential uniformity=-100.00000000227038
+Differential uniformity=-100.00000000227038
+Differential uniformity=-100.00000000227038
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+Differential uniformity=-100.000000002639
+

@@ -12,6 +12,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 import reports.ReportPpsus;
+import tests.Angulation;
 import tests.Background;
 import tests.FloodSpeed;
 import tests.Resolution;
@@ -30,9 +31,11 @@ public class inicio extends Application {
       
         PpsusImage aux = new PpsusImage("UNIF_LEHR_E001_DS.dcm");
         Uniformity uni = new Uniformity(aux);
-        //aux.toPng("uniformidadeTeste");
+                Report.printResult(aux.getInfo("103E")+"_RESULT");
+
+       //aux.toPng("uniformidadeTeste");
        // Teste de velocidade regua        
-        aux = new PpsusImage("VEL_REGUA_E001_DS.dcm");
+       /* aux = new PpsusImage("VEL_REGUA_E001_DS.dcm");
         ScaleSpeed spe = new ScaleSpeed(aux, "0,487;0,488;0,491;0,491;0,489;0,488;0,494;0,492;0,486;0,493", 0);
         aux = new PpsusImage("Bg_E001_DS.dcm");
         Background bg = new Background(aux);
@@ -45,7 +48,10 @@ public class inicio extends Application {
        aux = new PpsusImage("RES_LINF2_F001_DS.dcm");
      //  aux.toPng("resolucao.png");
         Resolution reso = new Resolution(aux);
-        Report.printResult(aux.getInfo("103E")+"_RESULT");
+        Report.printResult(aux.getInfo("103E")+"_RESULT");*/
+       // aux = new PpsusImage("ANG_LEHR_ID2.dcm");
+       // Angulation ang = new  Angulation(aux);
+       // ang.executeTest();
       //  ReportPpsus x= new ReportPpsus();
         //aux.SumImages("RES_LINF2_F001_DS.dcm");
        // aux.SumImage();
